@@ -1,32 +1,3 @@
-function computerPlay() {
-    var choices = ["Rock", "Paper", "Scissors"];
-    var choice = Math.floor(Math.random()*choices.length);
-    return choices[choice];
-}
-
-function playRound(playerSelection, computerSelection){
-    let p_play = document.getElementById("Player");
-    let p_comp = document.getElementById("Computer");
-    let p_res = document.getElementById("Result");
-    p_play.textContent = "Player: " + playerSelection;
-    p_comp.textContent = "Computer: " + computerSelection;
-    // console.log("Player: " + playerSelection);
-    // console.log("Computer: " + computerSelection);
-    if (playerSelection === computerSelection) {
-        // p_res.textContent = "Draw!";
-        return 0;
-        // console.log("Draw!");
-    } else if ((playerSelection === "Rock" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Paper") || (playerSelection === "Paper" && computerSelection === "Rock")){
-        // p_res.textContent = "Player Wins!";
-        return 1;
-        // console.log("Player Wins!");
-    } else {
-        // p_res.textContent = "Computer Wins!";
-        return 2;
-        // console.log("Computer Wins!");
-    }
-    // console.log("\n");
-}
 function main() {
     let points = prompt("First to how many points?");
     let p_score=0, c_score=0;
@@ -40,7 +11,6 @@ function main() {
                 break;
             }
             document.getElementById("Result").textContent = "Invalid weapon!";
-            // console.log("Invalid weapon!");
         }
         let output = playRound(player, computerPlay());
         if (output === 1){
@@ -57,26 +27,69 @@ function main() {
     }
 }
 
-main();
-/*let p_score=0, c_score=0, points=5;
-let count = 0;
+let points = prompt("First to how many points?");
+let p_score=0, c_score=0;
+let container = document.getElementById("container");
+let final = document.getElementById("Result");
+let p_play = document.getElementById("Player");
+let p_comp = document.getElementById("Computer");
+let count = document.getElementById("counter");
+let r_start = document.getElementById("restart");
+let round_res = document.getElementById("round");
+final.style.display = "none";
+
+function computerPlay() {
+    var choices = ["Rock", "Paper", "Scissors"];
+    var choice = Math.floor(Math.random()*choices.length);
+    return choices[choice];
+}
+
+function playRound(playerSelection, computerSelection){
+    // p_play.textContent = "Player: " + playerSelection;
+    // p_comp.textContent = "Computer: " + computerSelection;
+    if (playerSelection === computerSelection) {
+        round_res.textContent = "Draw";
+        return 0;
+    } else if ((playerSelection === "Rock" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Paper") || (playerSelection === "Paper" && computerSelection === "Rock")){
+        round_res.textContent = "You win!";
+        return 1;
+    } else {
+        round_res.textContent = "You lose!";
+        return 2;
+    }
+}
+
+function showResults(winner) {
+    final.style.display="block";
+    if (winner === 1){
+        final.textContent = "Player Wins!";
+    } else {
+        final.textContent = "Computer Wins!";
+    }
+    container.style.display = "none";
+    container.disabled = true;
+    p_play.style.display = "none";
+    p_comp.style.display = "none";
+    round_res.style.display = "none";
+    r_start.style.display = "block";
+}
+
+
 function printText(elem){
-    console.log(elem.textContent);
-    count++;
-    console.log(count);
-    let output = playRound(elem.textContent, computerPlay());
+    let output = playRound(elem.textContent.trim(), computerPlay().trim());
+    console.log(output);
     if (output === 1){
         p_score++;
     } else if (output === 2){
         c_score++;
     }
-    document.getElementById("Result").textContent = "Player: "+ p_score + "\t"+"Computer: "+ c_score;
+    p_play.textContent = "Player: " + p_score;
+    p_comp.textContent = "Computer: " + c_score;
+    console.log(p_score, c_score, points);
     if (p_score == points){
-        console.log("Player Wins!");
-    } else {
-        console.log("Computer Wins!");
+        showResults(1);
+    } else if (c_score == points){
+        showResults(0);
     }
-    if (count === 5){
-        document.getElementById("container").style.display = "none";
-    }
-}*/
+}
+
