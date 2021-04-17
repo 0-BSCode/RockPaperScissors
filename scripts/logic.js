@@ -1,32 +1,3 @@
-function main() {
-    let points = prompt("First to how many points?");
-    let p_score=0, c_score=0;
-    while ((p_score < points) && (c_score < points)){
-        let player = "";
-        while (true){
-            player = prompt("Weapon of choice: ");
-            let playerChoice = player.slice(0, 1).toUpperCase() + player.slice(1);
-            if ((playerChoice === "Rock") || (playerChoice === "Paper") || (playerChoice === "Scissors")){
-                player = playerChoice;
-                break;
-            }
-            document.getElementById("Result").textContent = "Invalid weapon!";
-        }
-        let output = playRound(player, computerPlay());
-        if (output === 1){
-            p_score++;
-        } else if (output === 2){
-            c_score++;
-        }
-        document.getElementById("Result").textContent = "Player: "+ p_score + "\t"+"Computer: "+ c_score;
-    }
-    if (p_score == points){
-        console.log("Player Wins!");
-    } else {
-        console.log("Computer Wins!");
-    }
-}
-
 let points = prompt("First to how many points?");
 let p_score=0, c_score=0;
 let container = document.getElementById("container");
