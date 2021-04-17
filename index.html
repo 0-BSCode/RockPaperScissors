@@ -3,16 +3,30 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dela+Gothic+One">
     </head>
     <body>
-        <!-- <section id="container">
-            <button onclick="printText(this)">Rock</button>
-            <button onclick="printText(this)">Paper</button>
-            <button onclick="printText(this)">Scissors</button>
-        </section> -->
-        <p id="Player"></p>
-        <p id="Computer"></p>
-        <p id="Result"></p>
+        <section id="container">
+            <button class="cover rock" onclick="printText(this)">
+                <p class="hidden">Rock</p>
+            </button>
+            <button class="cover paper" onclick="printText(this)">
+                <p class="hidden">Paper</p>
+            </button>
+            <button class="cover scissors"onclick="printText(this)">
+                <p class="hidden">Scissors</p>
+            </button>
+        </section>
+        <section id="container2">
+            <p id="round"></p>
+            <section id="counter">
+                <p id="Player"></p>
+                <p id="Computer"></p>
+                <p id="Result"></p>
+            </section>
+            <button class="hidden" onClick="window.location.reload();" id="restart">Try again?</button>
+        </section>
         <script src="scripts/logic.js"></script>
     </body>
 </html>
