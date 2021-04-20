@@ -16,8 +16,6 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection){
-    // p_play.textContent = "Player: " + playerSelection;
-    // p_comp.textContent = "Computer: " + computerSelection;
     if (playerSelection === computerSelection) {
         round_res.textContent = "Draw";
         return 0;
@@ -64,4 +62,6 @@ function printText(elem){
     }
 }
 
-//Hello World!
+const choices = document.querySelectorAll("button.cover");
+choices.forEach((key) => key.addEventListener("click", ()=>printText(key)));
+r_start.addEventListener("click", ()=>window.location.reload());
