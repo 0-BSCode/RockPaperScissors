@@ -1,18 +1,38 @@
 let points = prompt("First to how many points?");
 let p_score=0, c_score=0;
-let container = document.getElementById("container");
-let final = document.getElementById("Result");
-let p_play = document.getElementById("Player");
-let p_comp = document.getElementById("Computer");
-let count = document.getElementById("counter");
-let r_start = document.getElementById("restart");
-let round_res = document.getElementById("round");
-final.style.display = "none";
+let p_play = document.getElementById("player");
+let p_comp = document.getElementById("computer");
+const choices = document.querySelectorAll(".card_p");
+const c_choices = document.querySelectorAll(".card_c");
+let round_res = document.getElementById("border");
+
+const endContainer = document.createElement("div");
+endContainer.classList.add("end-card");
+
+const restartBtn = document.createElement("button");
+restartBtn.classList.add("restart");
+restartBtn.addEventListener("click", ()=>window.location.reload());
+restartBtn.textContent = "Try again?";
+
+const endText = document.createElement("p");
+endText.style.textAlign = "center";
+endText.style.fontFamily = 'Times New Roman', 'sans-serif';
+endText.style.fontSize = "50px";
+
 
 function computerPlay() {
     var choices = ["Rock", "Paper", "Scissors"];
     var choice = Math.floor(Math.random()*choices.length);
-    return choices[choice];
+    var output = choices[choice];
+    for (let i=0; i<c_choices.length; i++){
+        if (c_choices[i].classList.contains("is-active")){
+            c_choices[i].classList.remove("is-active")
+        } 
+        if (c_choices[i].getAttribute('id') === output){
+            c_choices[i].classList.add("is-active");
+        }
+    }
+    return output;
 }
 
 function playRound(playerSelection, computerSelection){
@@ -29,32 +49,28 @@ function playRound(playerSelection, computerSelection){
 }
 
 function showResults(winner) {
-    final.style.display="block";
+    const body = document.querySelector("body");
+    body.innerHTML = '';
     if (winner === 1){
-        final.textContent = "Player Wins!";
+        endText.textContent = "Player Wins!";
     } else {
-        final.textContent = "Computer Wins!";
+        endText.textContent = "Computer Wins!";
     }
-    container.style.display = "none";
-    container.disabled = true;
-    p_play.style.display = "none";
-    p_comp.style.display = "none";
-    round_res.style.display = "none";
-    r_start.style.display = "block";
+    endContainer.appendChild(endText);
+    endContainer.appendChild(restartBtn);
+    body.appendChild(endContainer);
 }
 
-
 function printText(elem){
-    let output = playRound(elem.textContent.trim(), computerPlay().trim());
-    console.log(output);
+    let choice = elem.getAttribute("data-value");
+    let output = playRound(choice, computerPlay().trim());
     if (output === 1){
         p_score++;
     } else if (output === 2){
         c_score++;
     }
-    p_play.textContent = "Player: " + p_score;
-    p_comp.textContent = "Computer: " + c_score;
-    console.log(p_score, c_score, points);
+    p_play.textContent = "Player Score: " + p_score;
+    p_comp.textContent = "Computer Score: " + c_score;
     if (p_score == points){
         showResults(1);
     } else if (c_score == points){
@@ -62,6 +78,4 @@ function printText(elem){
     }
 }
 
-const choices = document.querySelectorAll("button.cover");
 choices.forEach((key) => key.addEventListener("click", ()=>printText(key)));
-r_start.addEventListener("click", ()=>window.location.reload());
