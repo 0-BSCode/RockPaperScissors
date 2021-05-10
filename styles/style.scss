@@ -1,0 +1,133 @@
+@import "./variables";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    min-width: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 85%;
+    height: 80%;
+    border-radius: 30px;
+    border: solid 1px $black;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr 0.5fr 5fr 1fr;
+}
+
+#border {
+    background-color: $black;
+    color: $white;
+    text-align: center;
+}
+
+.card-list {
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 90%;
+}
+
+.card_p, .card_c {
+    width: 30%;
+    height: 100%;
+    border-radius: 5%;
+    border: none;
+    background-color: $white;
+    background-position: center;
+    background-size: cover;
+    filter: invert(1);
+    transition: all 0.3s;
+}
+
+.card_p:hover, .is-active {
+    filter: invert(0);
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 0px 16px 6px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 0px 0px 16px 6px rgba(0,0,0,0);
+}
+
+.card_p:active {
+    background-color: $lightGray;
+}
+
+.rock {
+    background-image: url('../media/rock.png')
+}
+
+.paper {
+    background-image: url('../media/paper.png')
+}
+
+.scissors {
+    background-image: url('../media/scissors.png')
+}
+
+.score {
+    color: $white;
+    font-size: $textSize;
+}
+
+.restart {
+    padding: 20px;
+    margin: auto;
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    font-family:'Times New Roman', Times, serif;
+    border: none;
+    border-radius: 40px;
+    transition: all 0.2s;
+}
+
+.restart:hover {
+    filter: invert(1);
+    border: solid 1px $white;
+    -webkit-box-shadow: 0px 10px 13px -7px #ffffff, 0px 0px 16px 6px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #ffffff, 0px 0px 16px 6px rgba(0,0,0,0);
+}
+
+.end-card {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+}
+
+#player {
+    background-color: $black;
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+    text-align: center;
+}
+
+#computer {
+    background-color: $black;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+    text-align: center;
+}
+
+@media only screen and (min-width: 1000px) {
+    .container {
+        width: 40%;
+        height: 90vh;
+    }
+    .card_c, .card_p {
+        height: 100%;
+    }
+}

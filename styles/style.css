@@ -1,0 +1,162 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  min-width: 480px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container {
+  width: 85%;
+  height: 80%;
+  border-radius: 30px;
+  border: solid 1px black;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 5fr 0.5fr 5fr 1fr;
+      grid-template-rows: 1fr 5fr 0.5fr 5fr 1fr;
+}
+
+#border {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.card-list {
+  position: relative;
+  top: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 90%;
+}
+
+.card_p, .card_c {
+  width: 30%;
+  height: 100%;
+  border-radius: 5%;
+  border: none;
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.card_p:hover, .is-active {
+  -webkit-filter: invert(0);
+          filter: invert(0);
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 0px 16px 6px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 0px 0px 16px 6px rgba(0, 0, 0, 0);
+}
+
+.card_p:active {
+  background-color: #cccccc;
+}
+
+.rock {
+  background-image: url("../media/rock.png");
+}
+
+.paper {
+  background-image: url("../media/paper.png");
+}
+
+.scissors {
+  background-image: url("../media/scissors.png");
+}
+
+.score {
+  color: white;
+  font-size: 20px;
+}
+
+.restart {
+  padding: 20px;
+  margin: auto;
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+  border: none;
+  border-radius: 40px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.restart:hover {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  border: solid 1px white;
+  -webkit-box-shadow: 0px 10px 13px -7px #ffffff, 0px 0px 16px 6px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #ffffff, 0px 0px 16px 6px rgba(0, 0, 0, 0);
+}
+
+.end-card {
+  width: 70%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 2fr;
+      grid-template-rows: 1fr 2fr;
+}
+
+#player {
+  background-color: black;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
+  text-align: center;
+}
+
+#computer {
+  background-color: black;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1000px) {
+  .container {
+    width: 40%;
+    height: 90vh;
+  }
+  .card_c, .card_p {
+    height: 100%;
+  }
+}
+/*# sourceMappingURL=style.css.map */
