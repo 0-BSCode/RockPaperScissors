@@ -2,31 +2,31 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Rock Paper Scissors</title>
-        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dela+Gothic+One">
     </head>
     <body>
-        <section id="container">
-            <button class="cover rock" onclick="printText(this)">
-                <p class="hidden">Rock</p>
-            </button>
-            <button class="cover paper" onclick="printText(this)">
-                <p class="hidden">Paper</p>
-            </button>
-            <button class="cover scissors"onclick="printText(this)">
-                <p class="hidden">Scissors</p>
-            </button>
-        </section>
-        <section id="container2">
-            <p id="round"></p>
-            <section id="counter">
-                <p id="Player"></p>
-                <p id="Computer"></p>
-                <p id="Result"></p>
-            </section>
-            <button class="hidden" onClick="window.location.reload();" id="restart">Try again?</button>
-        </section>
+        <div class="container">
+            <div class="score" id="player">
+                Player Score: 0
+            </div>
+            <div class="card-list">
+                <button class="card_p rock" data-value="Rock"></button>
+                <button class="card_p paper" data-value="Paper"></button>
+                <button class="card_p scissors" data-value="Scissors"></button>
+            </div>
+            <div id="border"></div>
+            <div class="card-list">
+                <button class="card_c rock" id="Rock"></button>
+                <button class="card_c paper" id="Paper"></button>
+                <button class="card_c scissors" id="Scissors"></button>
+            </div>
+            <div class="score" id="computer">
+                Computer Score: 0
+            </div>
+        </div>
         <script src="scripts/logic.js"></script>
     </body>
 </html>
