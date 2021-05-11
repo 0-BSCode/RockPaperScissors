@@ -1,4 +1,8 @@
-let points = prompt("First to how many points?");
+let points;
+do {
+    points = prompt("First to how many points?");
+} while (points < 1 || isNaN(parseInt(points)));
+
 let p_score=0, c_score=0;
 let p_play = document.getElementById("player");
 let p_comp = document.getElementById("computer");
